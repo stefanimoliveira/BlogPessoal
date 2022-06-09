@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import javax.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -42,7 +43,7 @@ public class TemaController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Tema> post (@RequestBody Tema tema){
+	public ResponseEntity<Tema> post (@Valid @RequestBody Tema tema){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(tema));
 	}
 	
