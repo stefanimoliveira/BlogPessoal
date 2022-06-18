@@ -37,10 +37,20 @@ public class Postagem {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date = new java.sql.Date(System.currentTimeMillis());
 	
-	@ManyToOne
+	  @ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
+
+	  @ManyToOne
+		@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
 	
+	public Tema getTema() {
+		return tema;
+	}
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
 	public long getId() {
 		return id;
 	}
@@ -66,10 +76,4 @@ public class Postagem {
 		this.date = date;
 	}
 	
-	public Tema getTema() {
-		return tema;
-	}
-	public void setTema(Tema tema) {
-		this.tema = tema;
-	}
 }

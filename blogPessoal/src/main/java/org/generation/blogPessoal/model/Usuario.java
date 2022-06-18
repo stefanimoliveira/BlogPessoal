@@ -36,18 +36,30 @@ public class Usuario {
 	
 	private String foto;
 	
-	private String tipo;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+ @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
 	
+	
+	public List<Postagem> getPostagem() {
+	return postagem;
+}
+
+public void setPostagem(List<Postagem> postagem) {
+	this.postagem = postagem;
+}
+
 	public Usuario(long id,String nome,String usuario,  String senha,String foto) {
 		this.id = id;
 		this.nome = nome;
 		this.usuario = usuario;
 		this.senha = senha;
 		this.foto = foto;
+	}
+	
+	public Usuario() {
+		
 	}
 
 	public String getFoto() {
@@ -56,14 +68,6 @@ public class Usuario {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 
 	public Long getId() {
